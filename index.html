@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hussein Mibar | السيرة الذاتية</title>
+<style>
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f1f4f8;color:#172b40}
+header{background:#10243a;color:white;text-align:center;padding:55px 20px}
+h1{font-size:38px;margin:10px}
+header p{color:#dbe5ef}
+main{max-width:750px;margin:30px auto;padding:0 16px}
+section{background:white;padding:25px;margin-bottom:18px;border-radius:12px;box-shadow:0 4px 15px #0000000a}
+h2{color:#244c70}
+a.button{display:inline-block;background:#c6a66b;color:#10243a;padding:12px 20px;border-radius:7px;text-decoration:none;font-weight:bold}
+.lang{float:left;background:transparent;color:white;border:1px solid white;padding:7px 12px;cursor:pointer}
+footer{text-align:center;padding:25px;color:#687789}
+</style>
+</head>
+<body>
+<header>
+<button class="lang" onclick="toggleLang()">English</button>
+<h1>Hussein Mibar</h1>
+<p id="welcome">الملف المهني والسيرة الذاتية</p>
+<p id="intro">مرحبًا بك في صفحتي الشخصية. يمكنك الاطلاع على سيرتي الذاتية وخبراتي.</p>
+<a class="button" href="السيرة الذاتية.pdf" target="_blank" id="cv">عرض السيرة الذاتية PDF</a>
+</header>
+<main>
+<section>
+<h2 id="aboutTitle">نبذة مهنية</h2>
+<p id="about">أبحث عن فرصة مهنية أستطيع من خلالها توظيف مهاراتي وخبراتي وتطوير قدراتي والمساهمة في نجاح جهة العمل.</p>
+</section>
+<section>
+<h2 id="skillsTitle">المهارات واللغات</h2>
+<p id="skills">العربية · التركية · الإنجليزية · التواصل · التعلم السريع</p>
+</section>
+<section>
+<h2 id="contactTitle">التواصل</h2>
+<p id="location">المدينة المنورة، المملكة العربية السعودية</p>
+</section>
+</main>
+<footer>Hussein Mibar © 2026</footer>
+<script>
+let en=false;
+function toggleLang(){
+en=!en;
+document.documentElement.lang=en?'en':'ar';
+document.documentElement.dir=en?'ltr':'rtl';
+document.querySelector('.lang').textContent=en?'العربية':'English';
+const t={
+welcome:['الملف المهني والسيرة الذاتية','Professional Profile & Résumé'],
+intro:['مرحبًا بك في صفحتي الشخصية. يمكنك الاطلاع على سيرتي الذاتية وخبراتي.','Welcome to my personal page. Explore my résumé and professional profile.'],
+cv:['عرض السيرة الذاتية PDF','View Résumé (PDF)'],
+aboutTitle:['نبذة مهنية','Professional Summary'],
+about:['أبحث عن فرصة مهنية أستطيع من خلالها توظيف مهاراتي وخبراتي وتطوير قدراتي والمساهمة في نجاح جهة العمل.','I am seeking an opportunity to apply my skills, build experience, and contribute to an organization’s success.'],
+skillsTitle:['المهارات واللغات','Skills & Languages'],
+skills:['العربية · التركية · الإنجليزية · التواصل · التعلم السريع','Arabic · Turkish · English · Communication · Fast learner'],
+contactTitle:['التواصل','Contact'],
+location:['المدينة المنورة، المملكة العربية السعودية','Madinah, Saudi Arabia']
+};
+for(const id in t)document.getElementById(id).textContent=t[id][en?1:0];
+}
+</script>
+</body>
+</html>
