@@ -26,15 +26,18 @@
       min-width: 320px;
       color: var(--ink);
       font-family: "Cairo", "Segoe UI", Tahoma, Arial, sans-serif;
-      background:
-        radial-gradient(ellipse at 87% 8%, rgba(31, 125, 111, .20), transparent 34rem),
-        radial-gradient(ellipse at 12% 26%, rgba(151, 117, 53, .12), transparent 31rem),
-        var(--night);
+      background: var(--night);
       line-height: 1.7;
     }
+    body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background:
+      radial-gradient(ellipse at 78% 12%, rgba(31,125,111,.30), transparent 42rem),
+      radial-gradient(ellipse at 12% 36%, rgba(151,117,53,.20), transparent 38rem),
+      radial-gradient(ellipse at 52% 100%, rgba(21,75,90,.24), transparent 44rem),
+      repeating-radial-gradient(circle at 82% 14%, transparent 0 46px, rgba(216,179,109,.025) 47px 48px, transparent 49px 92px),
+      linear-gradient(145deg,#07111d,#0b1e2b 55%,#08131f); }
     a { color: inherit; }
     button { color: inherit; font: inherit; }
-    .shell { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .shell { width: min(1320px, calc(100% - 64px)); margin-inline: auto; }
     .topbar {
       display: flex; align-items: center; justify-content: space-between; gap: 20px;
       min-height: 82px; border-bottom: 1px solid var(--line);
@@ -47,10 +50,10 @@
       box-shadow: 0 8px 28px rgba(216, 179, 109, .20);
     }
     .brand-copy { display: grid; line-height: 1.35; }
-    .brand-copy strong { font-size: 14px; letter-spacing: .02em; }
-    .brand-copy span { display: block; color: var(--muted); font-size: 9px; }
-    .brand-copy .brand-label { color: var(--gold); font-size: 10px; letter-spacing: .16em; font-weight: 800; }
-    .brand-copy .tagline { color: #aebbc4; font-size: 8px; letter-spacing: .01em; white-space: nowrap; }
+    .brand-copy strong { font-family: "Noto Naskh Arabic", "Traditional Arabic", "Geeza Pro", serif; font-size: 25px; font-weight: 800; letter-spacing: .015em; text-shadow: 0 1px 14px rgba(216,179,109,.22); }
+    .brand-copy span { display: block; color: var(--muted); font-size: 14px; }
+    .brand-copy .brand-label { color: var(--gold); font-size: 16px; letter-spacing: .16em; font-weight: 800; }
+    .brand-copy .tagline { color: #aebbc4; font-size: 13px; letter-spacing: .01em; white-space: nowrap; }
     .nav { display: flex; align-items: center; gap: 22px; }
     .nav a, .lang {
       color: #d5dce2; text-decoration: none; font-size: 13px;
@@ -61,6 +64,10 @@
       cursor: pointer; background: transparent; border: 1px solid var(--line);
       border-radius: 999px; padding: 7px 13px;
     }
+    .about-star { position:relative; display:inline-flex; align-items:center; justify-content:center; gap:8px; min-width:108px; min-height:42px; padding:7px 15px; border:1px solid rgba(232,198,126,.62); border-radius:999px; color:#f1d795; background:linear-gradient(145deg,rgba(216,179,109,.16),rgba(10,24,35,.42)); box-shadow:inset 0 1px rgba(255,255,255,.1),0 5px 20px rgba(0,0,0,.14); font-weight:800; font-size:15px; cursor:pointer; transition:transform .2s ease,color .2s ease,box-shadow .2s ease,background .2s ease; }
+    .about-star::before,.about-star::after { content:"✧"; color:#f5dda5; font-size:12px; transition:transform .2s ease; }
+    .about-star:hover { color:#fff7de; transform:scale(.97) translateY(2px); background:linear-gradient(145deg,rgba(216,179,109,.25),rgba(10,24,35,.58)); box-shadow:inset 0 2px 7px rgba(0,0,0,.2),0 1px 8px rgba(216,179,109,.16); }
+    .about-star:hover::before,.about-star:hover::after { transform:rotate(45deg) scale(.9); }
     .hero {
       position: relative; overflow: hidden; display: grid; grid-template-columns: 1.25fr .75fr;
       align-items: center; gap: 44px; min-height: 390px; padding-block: 66px 52px;
@@ -109,37 +116,44 @@
     .spark.two { bottom: 13%; inset-inline-start: 15%; color: var(--gold); font-size: 13px; }
     .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin: 10px 0 20px; }
     .section-head h2 { margin: 0; font-size: clamp(22px, 3vw, 30px); letter-spacing: -.03em; }
+    .section-head .discover-title { font-family:"Noto Naskh Arabic","Traditional Arabic","Geeza Pro",serif; font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:0; color:#f1d795; text-shadow:0 2px 18px rgba(216,179,109,.2); }
     .section-head p { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
     .section-kicker { color: var(--gold); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 34px; padding-block: 16px 24px; }
     .card {
-      position: relative; display: flex; flex-direction: column; min-height: 188px; padding: 20px;
-      border: 1px solid var(--line); border-radius: 19px; text-decoration: none; text-align: start;
-      background: linear-gradient(155deg, rgba(23, 43, 60, .88), rgba(12, 27, 41, .76));
-      box-shadow: 0 12px 35px rgba(0, 0, 0, .12); cursor: pointer;
-      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+      position: relative; display: flex; flex-direction: column; align-items:center; min-height: 230px; padding: 20px 12px;
+      border: 0; border-radius: 0; text-decoration: none; text-align: center; background: transparent;
+      box-shadow: none; cursor: default; transition: filter .22s ease;
     }
-    .card:hover { transform: translateY(-4px); border-color: rgba(114, 214, 193, .39); background: linear-gradient(155deg, rgba(25, 54, 68, .94), rgba(12, 27, 41, .9)); }
-    .card-top { display: flex; align-items: flex-start; justify-content: space-between; }
+    .card:hover { filter: brightness(1.17); }
+    .card-top { display: flex; align-items: center; justify-content: center; }
     .icon {
-      display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px;
-      color: var(--mint); border: 1px solid rgba(114, 214, 193, .17); background: rgba(114, 214, 193, .08);
+      display: grid; place-items: center; width: 68px; height: 68px; border-radius: 50%;
+      color: var(--mint); border: 1px solid rgba(114, 214, 193, .28); background: radial-gradient(circle,rgba(114,214,193,.18),transparent 70%);
     }
-    .icon.gold { color: var(--gold); border-color: rgba(216,179,109,.18); background: rgba(216,179,109,.08); }
+    .icon.gold { color: var(--gold); border-color: rgba(216,179,109,.3); background: radial-gradient(circle,rgba(216,179,109,.2),transparent 70%); }
     .icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .visual-link { display:grid; place-items:center; width:112px; height:112px; padding:0; border:0; border-radius:50%; color:inherit; background:transparent; text-decoration:none; cursor:pointer; transition:transform .2s ease,filter .2s ease; }
+    .visual-link:hover { transform:scale(1.12) rotate(-2deg); filter:drop-shadow(0 0 20px currentColor); }
+    .visual-link:focus-visible { outline:2px solid var(--gold); outline-offset:5px; }
+    .visual-link .icon { width:100%; height:100%; border:0; border-radius:0; background:transparent; }
+    .visual-link svg { width:86px; height:86px; stroke-width:1.45; }
     .arrow { color: #768897; font-size: 18px; transition: color .2s ease, transform .2s ease; }
     .card:hover .arrow { color: var(--gold); transform: translateX(-3px); }
-    .card h3 { margin: 19px 0 4px; font-size: 17px; letter-spacing: -.02em; }
+    .card h3 { margin: 14px 0 4px; font-size: 20px; letter-spacing: -.02em; }
     .card p { margin: 0; color: var(--muted); font-size: 12px; }
-    .card-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: auto; padding-top: 12px; color: #8395a2; font-size: 10px; }
+    .card-foot { display: none; }
+    .card .distinct-caption { margin:8px auto 0; max-width:260px; color:#f0d9a5; font-family:"Noto Naskh Arabic","Traditional Arabic",serif; font-size:18px; font-weight:700; line-height:1.5; }
+    .card .distinct-caption.en { color:#d9c798; font-family:Georgia,serif; font-size:14px; font-weight:600; }
     .tag { padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; color: #b8c4cc; }
     .about-band {
-      display: flex; align-items: center; justify-content: space-between; gap: 25px;
-      margin: 22px 0 55px; padding: 23px 25px; border: 1px solid rgba(216,179,109,.18);
-      border-radius: 20px; background: linear-gradient(110deg, rgba(216,179,109,.09), rgba(114,214,193,.055));
+      display: flex; align-items: center; justify-content: center; gap: 25px; width:100%; min-height:92px;
+      margin: 22px 0 55px; padding: 18px 25px; border: 1px solid rgba(216,179,109,.26);
+      border-radius: 20px; color:var(--gold); background: linear-gradient(110deg, rgba(216,179,109,.10), rgba(114,214,193,.055));
+      cursor:pointer; text-align:center; transition:transform .2s ease,border-color .2s ease,background .2s ease;
     }
-    .about-band h2 { margin: 0 0 3px; font-size: 18px; }
-    .about-band p { margin: 0; color: var(--muted); font-size: 12px; }
+    .about-band:hover { transform:translateY(-2px); border-color:rgba(216,179,109,.58); background:linear-gradient(110deg,rgba(216,179,109,.17),rgba(114,214,193,.09)); }
+    .office-prompt { margin:0; color:#f3d99d; font-size:20px; font-weight:800; letter-spacing:.01em; }
     footer { border-top: 1px solid var(--line); color: #83919d; font-size: 11px; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 19px; }
     dialog {
@@ -153,33 +167,50 @@
     .dialog-content p { margin: 0 0 20px; color: var(--muted); font-size: 13px; }
     .dialog-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
     .close { border: 0; background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; }
+    .quran-card .icon { color:#d9c18a; }
+    .hadith-card .icon { color:#a8cbff; border:0; border-radius:0; background:transparent; }
+    .books-card .icon { color:#e7bc83; }
+    .games-card .icon { color:#e6a2ff; }
+    .small-link { color:var(--gold); text-decoration:none; font-size:12px; border-bottom:1px dotted rgba(216,179,109,.5); padding-bottom:2px; }
     :focus-visible { outline: 2px solid var(--mint); outline-offset: 4px; }
     @media (max-width: 780px) {
-      .shell { width: min(100% - 30px, 600px); }
+      .shell { width: min(100% - 30px, 680px); }
       .hero { grid-template-columns: 1fr; gap: 3px; min-height: auto; padding-block: 50px 30px; }
       .hero-art { min-height: 200px; }
       .orb { width: 150px; }
       .orb::before { width: 192px; height: 66px; }
       .orb::after { width: 66px; height: 192px; }
       .orb-core b { font-size: 48px; }
-      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .card { min-height: 180px; padding: 16px; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap:16px 22px; }
+      .card { min-height: 190px; padding: 12px 8px; }
       .nav { gap: 12px; }
       .nav a { display: none; }
       .topbar { min-height: 70px; }
     }
     @media (max-width: 430px) {
       .shell { width: calc(100% - 26px); }
+      .topbar { gap:8px; }
+      .brand { gap:8px; }
+      .brand-mark { width:36px; height:36px; }
+      .brand-copy strong { font-size:18px; }
+      .brand-copy .brand-label { font-size:11px; }
+      .brand-copy .tagline { font-size:9px; }
+      .nav { gap:5px; }
+      .about-star { min-width:69px; min-height:42px; font-size:12px; }
+      .lang { padding:5px 8px; font-size:11px; }
       .hero { padding-top: 38px; }
       .hero-copy p { font-size: 14px; }
       .hero-art { min-height: 180px; }
       .grid { gap: 10px; }
-      .card { min-height: 176px; padding: 14px; border-radius: 16px; }
+      .card { min-height: 176px; padding: 10px 6px; border-radius: 0; }
       .card h3 { font-size: 15px; }
       .card p { font-size: 11px; }
       .icon { width: 41px; height: 41px; }
+      .card .icon { width:58px; height:58px; }
+      .visual-link { width:90px; height:90px; }
       .section-head { align-items: start; flex-direction: column; gap: 2px; }
-      .about-band { align-items: start; flex-direction: column; padding: 18px; }
+      .about-band { align-items: center; flex-direction: row; padding: 16px 12px; }
+      .office-prompt { font-size:18px; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -190,12 +221,13 @@
 <body>
   <header class="shell topbar">
     <a class="brand" href="#home" aria-label="حسين جيس - الرئيسية">
-      <span class="brand-mark" aria-hidden="true">J</span>
+      <span class="brand-mark" aria-hidden="true">H</span>
       <span class="brand-copy"><strong data-i="name">حسين جيس</strong><span class="brand-label">JISDOM</span><span class="tagline">we got all the wisdom you need.</span></span>
     </a>
     <nav class="nav" aria-label="التنقل الرئيسي">
       <a href="#home" data-i="home">الرئيسية</a>
       <a href="#explore" data-i="sections">الأقسام</a>
+      <button class="about-star" type="button" onclick="openTopic('about')" data-i="aboutMe">من أنا</button>
       <button class="lang" type="button" onclick="toggleLanguage()">English</button>
     </nav>
   </header>
@@ -203,55 +235,45 @@
   <main class="shell" id="home">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <span class="eyebrow" data-i="eyebrow">مساحة شخصية • مكتب • معرفة</span>
-        <h1 id="hero-title"><span data-i="hello">أهلًا بك في</span><br><span class="gradient-text" data-i="heroTitle">مساحتي الرقمية</span></h1>
+        <span class="eyebrow" data-i="eyebrow">مساحتي الرقمية الشخصية</span>
+        <h1 id="hero-title"><span data-i="hello">أهلًا بك في</span><br><span class="gradient-text" data-i="heroTitle">عالمي الرقمي</span></h1>
         <p data-i="intro">وجهة واحدة تجمع المعرفة والقراءة والتعريف بي وبالمكتب، بتجربة بسيطة وأنيقة على الجوال.</p>
         <div class="actions">
           <a class="button primary" href="#explore"><span data-i="explore">استكشف الأقسام</span><span aria-hidden="true">←</span></a>
-          <button class="button secondary" type="button" onclick="openTopic('about')" data-i="aboutMe">من أنا</button>
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
         <span class="spark one">✳</span><span class="spark two">✦</span>
-        <div class="orb"><div class="orb-core"><b>H</b><span>IDEAS · KNOWLEDGE · GROWTH</span></div></div>
+        <div class="orb"><div class="orb-core"><b>H</b><span data-i="motto">أفكار · معرفة · نمو</span></div></div>
       </div>
     </section>
 
     <section id="explore" aria-labelledby="section-title">
       <div class="section-head">
-        <div><span class="section-kicker" data-i="discover">اكتشف</span><h2 id="section-title" data-i="sectionTitle">اختر وجهتك</h2><p data-i="sectionDesc">أقسام مختارة لتبدأ منها — كلها قريبة بلمسة.</p></div>
+        <div><h2 id="section-title" class="discover-title" data-i="sectionTitle">اكتشف عالمي بلمسة</h2></div>
       </div>
       <div class="grid">
-        <a class="card" href="https://quran.com/ar?locale=ar" target="_blank" rel="noopener noreferrer">
-          <div class="card-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M12 7v13M12 8c-2.2-2-5.3-2.4-8-1.1v12c2.7-1.3 5.8-.9 8 1.1m0-12c2.2-2 5.3-2.4 8-1.1v12c-2.7-1.3-5.8-.9-8 1.1"/><path d="M7 10h2m-2 3h2m8-3h-2m2 3h-2"/></svg></span><span class="arrow" aria-hidden="true">↗</span></div>
-          <h3 data-i="quran">القرآن الكريم</h3><p data-i="quranDesc">قراءة القرآن من مصدر خارجي موثوق.</p><div class="card-foot"><span data-i="read">قراءة مباشرة</span><span class="tag">Quran.com</span></div>
-        </a>
-        <a class="card" href="https://dorar.net/hadith" target="_blank" rel="noopener noreferrer">
-          <div class="card-top"><span class="icon gold"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.8 8.8 0 0 1-3.7-.8L4 20l1.3-3.1A7 7 0 0 1 4 12c0-4.1 3.6-7.5 8-7.5s8 3.1 8 7Z"/><path d="M8 11h8m-8 3h5"/></svg></span><span class="arrow" aria-hidden="true">↗</span></div>
-          <h3 data-i="hadith">الأحاديث النبوية</h3><p data-i="hadithDesc">انتقال مباشر إلى موسوعة الحديث.</p><div class="card-foot"><span data-i="browse">تصفّح المصدر</span><span class="tag">الدرر السنية</span></div>
-        </a>
-        <button class="card" type="button" onclick="openTopic('books')">
-          <div class="card-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21Z"/><path d="M4 5.5v13A2.5 2.5 0 0 1 6.5 16H20M8 7h8m-8 4h7"/></svg></span><span class="arrow" aria-hidden="true">←</span></div>
-          <h3 data-i="books">كتب وروايات</h3><p data-i="booksDesc">ركن هادئ لقراءات خفيفة وحكايات جميلة.</p><div class="card-foot"><span data-i="library">المكتبة</span><span class="tag" data-i="soon">قريبًا</span></div>
-        </button>
-        <button class="card" type="button" onclick="openTopic('about')">
-          <div class="card-top"><span class="icon gold"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.5 3.2-5.3 7-5.3s6.2 1.8 7 5.3"/><path d="m18.5 4 .6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg></span><span class="arrow" aria-hidden="true">←</span></div>
-          <h3 data-i="aboutMe">من أنا</h3><p data-i="aboutDesc">مساحة للتعرّف على حسين وخبراته واهتماماته.</p><div class="card-foot"><span data-i="profile">الملف الشخصي</span><span class="tag" data-i="soon">قريبًا</span></div>
-        </button>
-        <button class="card" type="button" onclick="openTopic('office')">
-          <div class="card-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 20V5l8-2 8 2v15M2 20h20"/><path d="M8 8h1m6 0h1M8 12h1m6 0h1M10 20v-4h4v4"/></svg></span><span class="arrow" aria-hidden="true">←</span></div>
-          <h3 data-i="office">المكتب والخدمات</h3><p data-i="officeDesc">تعريف بالمكتب ومساحة لعرض الخدمات والتواصل.</p><div class="card-foot"><span data-i="officeInfo">معلومات المكتب</span><span class="tag" data-i="soon">قريبًا</span></div>
-        </button>
-        <button class="card" type="button" onclick="openTopic('games')">
-          <div class="card-top"><span class="icon gold"><svg viewBox="0 0 24 24"><path d="M6.5 8h11a4.5 4.5 0 0 1 4.3 5.8l-1 3.1a2.3 2.3 0 0 1-3.8 1l-2.1-2H9.1l-2.1 2a2.3 2.3 0 0 1-3.8-1l-1-3.1A4.5 4.5 0 0 1 6.5 8Z"/><path d="M7 11v4m-2-2h4m7-1h.01m3 2h.01"/></svg></span><span class="arrow" aria-hidden="true">←</span></div>
-          <h3 data-i="games">ألعاب خفيفة</h3><p data-i="gamesDesc">استراحة صغيرة وألعاب مناسبة لشاشة الجوال.</p><div class="card-foot"><span data-i="play">العب واستمتع</span><span class="tag" data-i="soon">قريبًا</span></div>
-        </button>
+        <div class="card quran-card">
+          <div class="card-top"><a class="visual-link" href="https://quran.com/ar?locale=ar" target="_blank" rel="noopener noreferrer" aria-label="القرآن الكريم - Quran.com"><span class="icon"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M25 14h46c7 0 11 5 11 12v38H14V26c0-7 4-12 11-12Z"/><path d="M48 15v49M22 25c9-3 17-2 22 2m-22 9c8-2 15-1 22 2m30-11c-9-3-17-2-22 2m22 9c-8-2-15-1-22 2"/><path d="M14 64h68L66 80H30L14 64Zm16 16-8 8m44-8 8 8M38 80l-6 8m26-8 6 8"/><path d="M33 9h30"/></svg></span></a></div>
+          <h3 data-i="quran">القرآن الكريم</h3><p class="distinct-caption" data-i="quranQuote">لا تدع روحك تنسى كيف خاطبها خالقها</p>
+        </div>
+        <div class="card hadith-card">
+          <div class="card-top"><a class="visual-link" href="https://dorar.net/hadith" target="_blank" rel="noopener noreferrer" aria-label="الأحاديث النبوية - الدرر السنية"><span class="icon"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M14 21c0-6 5-11 11-11h46c6 0 11 5 11 11v34c0 6-5 11-11 11H40L22 80V66c-5-1-8-6-8-11V21Z"/><path d="M29 31h37M29 43h30"/><path d="M58 56h15c5 0 9 4 9 9v9l8 7H63c-5 0-9-4-9-9v-3"/></svg></span></a></div>
+          <h3 data-i="hadith">الأحاديث النبوية</h3><p class="distinct-caption" data-i="hadithQuote">ليس كل حديث لم نسمع به أي غير موجود</p>
+        </div>
+        <div class="card books-card">
+          <div class="card-top"><button class="visual-link" type="button" onclick="openTopic('books')" aria-label="كتب وروايات"><span class="icon"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M12 20c15-7 27-5 36 2v58c-10-7-22-9-36-2V20Z"/><path d="M84 20c-15-7-27-5-36 2v58c10-7 22-9 36-2V20Z"/><path d="M20 31c8-3 15-2 21 1m-21 9c8-3 15-2 21 1m34-10c-8-3-15-2-21 1m21 9c-8-3-15-2-21 1M48 22v57"/></svg></span></button></div>
+          <h3 data-i="books">كتب وروايات</h3><p class="distinct-caption" data-i="booksQuote">العالم يكرر نفسه ومعرفة الماضي دليل في المستقبل.</p>
+        </div>
+        <div class="card games-card">
+          <div class="card-top"><button class="visual-link" type="button" onclick="openTopic('games')" aria-label="ألعاب خفيفة"><span class="icon"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M25 31h46c12 0 20 10 17 22l-5 20c-2 9-12 11-19 5L53 66H43L32 78c-7 6-17 4-19-5l-5-20c-3-12 5-22 17-22Z"/><path d="M29 42v18m-9-9h18m30-5h.1m11 10h.1"/></svg></span></button></div>
+          <h3 data-i="games">ألعاب خفيفة</h3><p class="distinct-caption" data-i="gamesQuote">روح عن نفسك شوي</p>
+        </div>
       </div>
     </section>
 
-    <section class="about-band" aria-label="تعريف مختصر">
-      <div><h2 data-i="bandTitle">كل ما يهمّك، في مكان واحد</h2><p data-i="bandDesc">تصفّح الأقسام من هاتفك، واحفظ الرابط على بطاقة NFC للوصول السريع.</p></div>
-      <button class="button secondary" type="button" onclick="openTopic('office')" data-i="officeButton">تعرّف على المكتب <span aria-hidden="true">←</span></button>
+    <section aria-label="معلومات المكتب">
+      <button class="about-band" type="button" onclick="openTopic('office')"><span class="office-prompt" data-i="officeButton">مهتم بشأن المكتب؟</span></button>
     </section>
   </main>
 
@@ -264,15 +286,15 @@
   <script>
     const copy = {
       ar: {
-        name:'حسين جيس', home:'الرئيسية', sections:'الأقسام', eyebrow:'مساحة شخصية • مكتب • معرفة', hello:'أهلًا بك في', heroTitle:'مساحتي الرقمية',
-        intro:'وجهة واحدة تجمع المعرفة والقراءة والتعريف بي وبالمكتب، بتجربة بسيطة وأنيقة على الجوال.', explore:'استكشف الأقسام', aboutMe:'من أنا', discover:'اكتشف', sectionTitle:'اختر وجهتك', sectionDesc:'أقسام مختارة لتبدأ منها — كلها قريبة بلمسة.',
-        quran:'القرآن الكريم', quranDesc:'قراءة القرآن من مصدر خارجي موثوق.', read:'قراءة مباشرة', hadith:'الأحاديث النبوية', hadithDesc:'انتقال مباشر إلى موسوعة الحديث.', browse:'تصفّح المصدر', books:'كتب وروايات', booksDesc:'ركن هادئ لقراءات خفيفة وحكايات جميلة.', library:'المكتبة', soon:'قريبًا', aboutDesc:'مساحة للتعرّف على حسين وخبراته واهتماماته.', profile:'الملف الشخصي', office:'المكتب والخدمات', officeDesc:'تعريف بالمكتب ومساحة لعرض الخدمات والتواصل.', officeInfo:'معلومات المكتب', games:'ألعاب خفيفة', gamesDesc:'استراحة صغيرة وألعاب مناسبة لشاشة الجوال.', play:'العب واستمتع', bandTitle:'كل ما يهمّك، في مكان واحد', bandDesc:'تصفّح الأقسام من هاتفك، واحفظ الرابط على بطاقة NFC للوصول السريع.', officeButton:'تعرّف على المكتب', footer:'مصممة لتجربة أنيقة على الجوال والكمبيوتر.', close:'إغلاق',
+        name:'حسين جيس', home:'الرئيسية', sections:'الأقسام', eyebrow:'مساحتي الرقمية الشخصية', hello:'أهلًا بك في', heroTitle:'عالمي الرقمي', motto:'أفكار · معرفة · نمو',
+        intro:'وجهة واحدة تجمع المعرفة والقراءة والتعريف بي وبالمكتب، بتجربة بسيطة وأنيقة على الجوال.', explore:'استكشف الأقسام', aboutMe:'من أنا', discover:'اكتشف', sectionTitle:'اكتشف عالمي بلمسة', sectionDesc:'',
+        quran:'القرآن الكريم', quranQuote:'لا تدع روحك تنسى كيف خاطبها خالقها', hadith:'الأحاديث النبوية', hadithQuote:'ليس كل حديث لم نسمع به أي غير موجود', books:'كتب وروايات', booksQuote:'العالم يكرر نفسه ومعرفة الماضي دليل في المستقبل.', soon:'قريبًا', aboutDesc:'مساحة للتعرّف على حسين وخبراته واهتماماته.', profile:'الملف الشخصي', office:'المكتب والخدمات', officeDesc:'تعريف بالمكتب ومساحة لعرض الخدمات والتواصل.', officeInfo:'معلومات المكتب', games:'ألعاب خفيفة', gamesQuote:'روح عن نفسك شوي', bandTitle:'كل ما يهمّك، في مكان واحد', bandDesc:'تصفّح الأقسام من هاتفك، واحفظ الرابط على بطاقة NFC للوصول السريع.', officeButton:'مهتم بشأن المكتب؟', footer:'مصممة لتجربة أنيقة على الجوال والكمبيوتر.', close:'إغلاق',
         topics:{books:['كتب وروايات','سيُضاف محتوى هذا القسم لاحقًا.'],about:['من أنا','ستظهر هنا نبذة حسين جيس وخبراته واهتماماته.'],office:['المكتب والخدمات','ستُضاف هنا معلومات المكتب والخدمات ووسائل التواصل.'],games:['ألعاب خفيفة','ستُضاف هنا ألعاب بسيطة تعمل مباشرة على الجوال.']}
       },
       en: {
-        name:'Hussein Jis', home:'Home', sections:'Sections', eyebrow:'PERSONAL • OFFICE • KNOWLEDGE', hello:'Welcome to', heroTitle:'My digital space',
-        intro:'One destination for knowledge, reading, and a future introduction to me and my office — shaped for a smooth mobile experience.', explore:'Explore sections', aboutMe:'About me', discover:'EXPLORE', sectionTitle:'Choose your destination', sectionDesc:'A curated set of sections, each just a tap away.',
-        quran:'The Holy Quran', quranDesc:'Read the Quran through an external source.', read:'Open source', hadith:'Prophetic Hadith', hadithDesc:'Go directly to a hadith encyclopedia.', browse:'Browse source', books:'Books & Novels', booksDesc:'A quiet corner for light reading and stories.', library:'The library', soon:'Coming soon', aboutDesc:'A space to learn about Hussein, his experience, and interests.', profile:'Personal profile', office:'Office & Services', officeDesc:'An introduction to the office, its services, and contact details.', officeInfo:'Office information', games:'Light Games', gamesDesc:'A small break with games designed for mobile.', play:'Play & enjoy', bandTitle:'Everything in one place', bandDesc:'Explore on your phone and save this link to an NFC card for quick access.', officeButton:'Discover the office', footer:'Designed for a polished experience on phone and desktop.', close:'Close',
+        name:'Hussein Jis', home:'Home', sections:'Sections', eyebrow:'MY PERSONAL DIGITAL SPACE', hello:'Welcome to', heroTitle:'My digital world', motto:'IDEAS · KNOWLEDGE · GROWTH',
+        intro:'One destination for knowledge, reading, and a future introduction to me and my office — shaped for a smooth mobile experience.', explore:'Explore sections', aboutMe:'About me', discover:'EXPLORE', sectionTitle:'Discover my world in one tap', sectionDesc:'',
+        quran:'The Holy Quran', quranQuote:'Do not let your soul forget how its Creator spoke to it.', hadith:'Prophetic Hadith', hadithQuote:'Not every hadith we have not heard is nonexistent.', books:'Books & Novels', booksQuote:'The world repeats itself; knowledge of the past guides the future.', soon:'Coming soon', aboutDesc:'A space to learn about Hussein, his experience, and interests.', profile:'Personal profile', office:'Office & Services', officeDesc:'An introduction to the office, its services, and contact details.', officeInfo:'Office information', games:'Light Games', gamesQuote:'Take a little break', bandTitle:'Everything in one place', bandDesc:'Explore on your phone and save this link to an NFC card for quick access.', officeButton:'Interested in the office?', footer:'Designed for a polished experience on phone and desktop.', close:'Close',
         topics:{books:['Books & Novels','Content for this section will be added later.'],about:['About me','A short introduction to Hussein Jis, his experience, and interests will appear here.'],office:['Office & Services','Office details, services, and contact information will be added here.'],games:['Light Games','Simple games that work on mobile will be added here.']}
       }
     };
